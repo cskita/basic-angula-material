@@ -1,0 +1,63 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button>
+      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
+    </button>
+    <a routerLink="/">
+      <span>Tese Mestrado</span>
+    </a>
+    <span class="toolbar-spacer"></span>
+    <button mat-icon-button routerLink="/">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  
+  <mat-sidenav #sidenav mode="over" (keydown.escape)="sidenav.close()" disableClose>
+    <mat-toolbar>
+      <mat-toolbar-row>
+        <h2> Menu </h2>
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" style="height: 0;"></a>
+      <a mat-list-item
+        (click)="sidenav.close()"
+        routerLink="/"
+        routerLinkActive="list-item-active">
+        <mat-icon matListIcon class="nav-list-icon">home</mat-icon>
+        Home
+      </a>
+      <a mat-list-item
+        (click)="sidenav.close()"
+        routerLink="/dashboard"
+        routerLinkActive="list-item-active">
+        <mat-icon matListIcon class="nav-list-icon">dashboard</mat-icon>
+        Dashboard
+      </a>
+
+      <mat-divider></mat-divider>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav #commandbarSidenav position="end" mode="side" class="crm-command-bar-sidenav">
+    <mat-list style="padding: 10px;">
+      <mat-card style="padding: 8px; margin-bottom: 10px; text-align: center;">
+        <mat-card-content>
+          <mat-card-subtitle>
+            Ana Paula Scariot
+          </mat-card-subtitle>
+        </mat-card-content>
+      </mat-card>
+    </mat-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content contentId="main-content">
+    <main style="height: 88vh;">
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
